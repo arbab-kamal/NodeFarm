@@ -3,7 +3,9 @@ const http = require('http');
 const url = require('url');
 const slugify = require('slugify');
 const replaceTemplate = require('./modules/replaceTemplate');
+const dotenv = require('dotenv');
 
+dotenv.config({ path: './config.env' })
 /////////////////////////////////
 // FILES
 
@@ -90,7 +92,7 @@ const server = http.createServer((req, res) => {
     res.end('<h1>Page not found!</h1>');
   }
 });
-
-server.listen(8000, '127.0.0.1', () => {
+const port = process.env.PORT || 3000;
+server.listen(port, '127.0.0.1', () => {
   console.log('Listening to requests on port 8000');
 });
