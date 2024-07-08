@@ -6,6 +6,7 @@ const replaceTemplate = require('./modules/replaceTemplate');
 const dotenv = require('dotenv');
 
 dotenv.config({ path: './config.env' })
+const port = process.env.PORT || 3000;
 /////////////////////////////////
 // FILES
 
@@ -92,7 +93,7 @@ const server = http.createServer((req, res) => {
     res.end('<h1>Page not found!</h1>');
   }
 });
-const port = process.env.PORT || 3000;
-server.listen(port, '127.0.0.1', () => {
-  console.log('Listening to requests on port 8000');
+
+server.listen(port, () => {
+  console.log(`app running on port ${port}...`);
 });
